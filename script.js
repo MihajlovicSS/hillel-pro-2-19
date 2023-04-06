@@ -45,6 +45,7 @@ function renderPhotosList(list){
     const bigImages = list.splice(list.length-2, 2)
     const htmlTumbs = list.map(createPhotoItemHTML).join('')
     const htmlBigImages = bigImages.map(createBigPhotoItemHTML).join('')
+    
     thumbs.innerHTML = htmlTumbs
     bigPhotos.innerHTML = htmlBigImages
 }
