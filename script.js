@@ -18,6 +18,7 @@ albums.addEventListener('click', onLinkClick)
 
 function onLinkClick(e){
     const target = e.target
+
     if(target.classList.contains(CLASS_LINK)){
         showPhotosByAlbumId(Number(target.dataset.id))
     }
@@ -60,30 +61,21 @@ function createListItemHTML(item){
     `
 }
 
-function createPhotoItemHTML(item){
+function createImageHTML(url, parameter){
     return `
-        <div class="gallery-photos__photo">
-            <img src="${item.thumbnailUrl}" alt="#">
+        <div class="gallery-photos__${parameter}photo">
+            <img class="${parameter}photo" src="${url}" alt="#">
         </div>
     `
+}
+
+function createPhotoItemHTML(item){
+    return createImageHTML(item.thumbnailUrl)
 }
 
 function createBigPhotoItemHTML(item){
-    return `
-        <div class="gallery-photos__big-photo">
-            <img class="big-photo" src="${item.url}" alt="#">
-        </div>
-    `
+    return createImageHTML(item.url, 'big-')
 }
-
-
-
-
-
-
-
-
-
 
 function showError(error){
     alert(error.message)
